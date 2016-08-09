@@ -37,6 +37,9 @@ def get_issues_comments(issue_id):
     from one issue
     """
     comments_json = []
+    if not os.path.exists('./issues_comments'):
+        os.makedirs('./issues_comments')
+
     if not os.path.isfile('./issues_comments/issue_'+str(issue_id)+'_comments.json'):
         comments_json = requests.get('https://www.softwarepublico.gov.br/gitlab/api/v3/'
                                      +'projects/30/issues/'+str(issue_id)+
